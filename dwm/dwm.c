@@ -2053,6 +2053,8 @@ updatebars(void)
 void
 updatebarpos(Monitor *m)
 {
+bh = 30; 
+
 	m->wy = m->my;
 	m->wh = m->mh;
 	if (m->showbar) {
