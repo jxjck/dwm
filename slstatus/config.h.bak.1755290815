@@ -12,6 +12,7 @@ static const char unknown_str[] = "n/a";
 /*
  * function            description                     argument (example)
  *
+ * battery_perc        battery percentage              battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
@@ -65,10 +66,11 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
     /* function        format              argument */
 
-    { run_command, "%s%% | ", "pamixer --get-volume" },
+    { run_command, "🔊 %s%% | ", "pamixer --get-volume" },
     { ram_perc,        "ram: %s%% | ",      NULL },
     { disk_perc,       "disk: %s%% | ",     "/" },
-  { run_command, "%s", "/home/taichi/bin/bat_both.sh" },
+    { battery_perc,    "bat: %s%% | ",      "BAT0" },
+    { run_command,     " %s | ",            "~/.local/bin/weather.sh" },
     { datetime,        "%s",                "%y/%m/%d" }, // Change this line
 };
 

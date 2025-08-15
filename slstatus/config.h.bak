@@ -1,0 +1,26 @@
+/* See LICENSE file for copyright and license details. */
+
+/* interval between updates (in ms) */
+const unsigned int interval = 1000;
+
+/* text to show if no value can be retrieved */
+static const char unknown_str[] = "n/a";
+
+/* maximum output string length */
+#define MAXLEN 2048
+
+/* color macros for status2d/barcolors */
+#define C1  "^c#d98b4b^"  /* orange-brown (accent) */
+#define C2  "^c#f4e1c1^"  /* warm light (optional alt) */
+#define C3  "^c#e0aa72^"  /* softer orange */
+#define CR  "^d^"         /* reset to default */
+
+static const struct arg args[] = {
+    /* function        format                              argument */
+    { run_command,     C1 "" CR " %s%% | ",               "pamixer --get-volume" },  /* volume */
+    { ram_perc,        C1 "" CR " %s%% | ",               NULL },                    /* RAM */
+    { disk_perc,       C1 "" CR " %s%% | ",               "/"  },                    /* Disk */
+    { battery_perc,    C1 "" CR " %s%% | ",               "BAT0" },                  /* Battery (your % stays) */
+    { run_command,     "%s | ",                            "~/.local/bin/weather.sh" },/* Weather (your script) */
+    { datetime,        "%s",                               "%Y年%m月%d日" },          /* Date only (no calendar icon) */
+};
