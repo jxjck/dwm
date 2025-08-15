@@ -1743,7 +1743,7 @@ setup(void)
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
-	bh = 46;
+	bh = drw->fonts->h + 2;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
@@ -2053,7 +2053,7 @@ updatebars(void)
 void
 updatebarpos(Monitor *m)
 {
-bh = 46; 
+bh = 30; 
 
 	m->wy = m->my;
 	m->wh = m->mh;
